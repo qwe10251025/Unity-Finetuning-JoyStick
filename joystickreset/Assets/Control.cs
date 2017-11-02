@@ -31,7 +31,6 @@ public class Control : MonoBehaviour {
 		imgV = (imgy - 0) / (90) * (155 - 155 * -1) - 155;
 		//Debug.Log ("num"+num);
 		//imgy = imgy+155;
-		Debug.Log ("imgV"+imgV);
 
 		img.transform.localPosition = new Vector3(434,-1*imgV,0);
 		//Debug.Log ("imgy"+imgy);

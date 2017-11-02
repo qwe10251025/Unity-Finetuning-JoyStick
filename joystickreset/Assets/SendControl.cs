@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SendControl : MonoBehaviour {
 
-	public Camera blackview;
+	public GameObject blackview;
 
 	public GameObject mission1;
 	public Camera cam1;
@@ -62,6 +62,7 @@ public class SendControl : MonoBehaviour {
 
 		//true = snap button can send data 
 		taskstatus = true;
+		blackview.SetActive(true);
 
 		startbut.enabled = true;
 		startimg.enabled = true;
@@ -69,6 +70,9 @@ public class SendControl : MonoBehaviour {
 
 	}
 	public void Startmission(){
+
+		blackview.SetActive(false);
+
 
 		mission1.SetActive(true);
 		god0box.enabled = true;
@@ -92,6 +96,8 @@ public class SendControl : MonoBehaviour {
 
 			if (taskstatus == true) {
 
+				blackview.SetActive(true);
+
 
 				mission1.SetActive(false);
 				god0box.enabled = false;
@@ -103,6 +109,9 @@ public class SendControl : MonoBehaviour {
 				oscSender.MySendOSCMessageTriggerMethod();	
 				taskstatus = false;
 			}else if (taskstatus == false) {
+
+				blackview.SetActive(false);
+
 
 				mission2.SetActive(true);
 				god15box.enabled = true;
@@ -121,6 +130,7 @@ public class SendControl : MonoBehaviour {
 
 			if (taskstatus == true) {
 
+				blackview.SetActive(true);
 
 				mission2.SetActive(false);
 				god15box.enabled = false;
@@ -132,6 +142,8 @@ public class SendControl : MonoBehaviour {
 				oscSender.MySendOSCMessageTriggerMethod();	
 				taskstatus = false;
 			}else if (taskstatus == false) {
+
+				blackview.SetActive(false);
 
 				mission3.SetActive(true);
 				ship30box.enabled = true;
@@ -145,8 +157,153 @@ public class SendControl : MonoBehaviour {
 			}
 
 			break;
-	
 
+		case 2:
+
+			if (taskstatus == true) {
+
+				blackview.SetActive(true);
+
+				mission3.SetActive(false);
+				ship30box.enabled = false;
+				ship30line.enabled = false;
+
+
+
+				oscSender.setOSCData (2,0,mission3.transform.position.x,mission3.transform.position.y,mission3.transform.position.z,mission3.transform.rotation.eulerAngles.y,cam3.transform.rotation.eulerAngles.x);
+				oscSender.MySendOSCMessageTriggerMethod();	
+				taskstatus = false;
+			}else if (taskstatus == false) {
+
+				blackview.SetActive(false);
+
+				mission4.SetActive(true);
+				ship45box.enabled = true;
+				ship45line.enabled = true;
+
+				missionnum = 3;
+				taskstatus = true;
+
+				oscSender.setOSCData (3,1,0f,0f,0f,0f,0f);
+				oscSender.MySendOSCMessageTriggerMethod();
+			}
+
+			break;
+
+		case 3:
+
+			if (taskstatus == true) {
+
+				blackview.SetActive(true);
+
+				mission4.SetActive(false);
+				ship45box.enabled = false;
+				ship45line.enabled = false;
+
+
+
+				oscSender.setOSCData (3,0,mission4.transform.position.x,mission4.transform.position.y,mission4.transform.position.z,mission4.transform.rotation.eulerAngles.y,cam4.transform.rotation.eulerAngles.x);
+				oscSender.MySendOSCMessageTriggerMethod();	
+				taskstatus = false;
+			}else if (taskstatus == false) {
+
+				blackview.SetActive(false);
+
+				mission5.SetActive(true);
+				car60box.enabled = true;
+				car60line.enabled = true;
+
+				missionnum = 4;
+				taskstatus = true;
+
+				oscSender.setOSCData (4,1,0f,0f,0f,0f,0f);
+				oscSender.MySendOSCMessageTriggerMethod();
+			}
+
+			break;
+
+		case 4:
+
+			if (taskstatus == true) {
+
+				blackview.SetActive(true);
+
+				mission5.SetActive(false);
+				car60box.enabled = false;
+				car60line.enabled = false;
+
+
+
+				oscSender.setOSCData (4,0,mission5.transform.position.x,mission5.transform.position.y,mission5.transform.position.z,mission5.transform.rotation.eulerAngles.y,cam5.transform.rotation.eulerAngles.x);
+				oscSender.MySendOSCMessageTriggerMethod();	
+				taskstatus = false;
+			}else if (taskstatus == false) {
+
+				blackview.SetActive(false);
+
+				mission6.SetActive(true);
+				car75box.enabled = true;
+				car75line.enabled = true;
+
+				missionnum = 5;
+				taskstatus = true;
+
+				oscSender.setOSCData (5,1,0f,0f,0f,0f,0f);
+				oscSender.MySendOSCMessageTriggerMethod();
+			}
+
+			break;
+
+		case 5:
+
+			if (taskstatus == true) {
+
+				blackview.SetActive(true);
+
+				mission6.SetActive(false);
+				car75box.enabled = false;
+				car75line.enabled = false;
+
+
+
+				oscSender.setOSCData (5,0,mission6.transform.position.x,mission6.transform.position.y,mission6.transform.position.z,mission6.transform.rotation.eulerAngles.y,cam6.transform.rotation.eulerAngles.x);
+				oscSender.MySendOSCMessageTriggerMethod();	
+				taskstatus = false;
+			}else if (taskstatus == false) {
+
+				blackview.SetActive(false);
+
+				mission7.SetActive(true);
+				ship90box.enabled = true;
+				ship90line.enabled = true;
+
+				missionnum = 6;
+				taskstatus = true;
+
+				oscSender.setOSCData (6,1,0f,0f,0f,0f,0f);
+				oscSender.MySendOSCMessageTriggerMethod();
+			}
+
+			break;
+		
+		case 6:
+
+			if (taskstatus == true) {
+
+				blackview.SetActive(true);
+
+				mission7.SetActive(false);
+				ship90box.enabled = false;
+				ship90line.enabled = false;
+
+
+
+				oscSender.setOSCData (6,0,mission7.transform.position.x,mission7.transform.position.y,mission7.transform.position.z,mission7.transform.rotation.eulerAngles.y,cam7.transform.rotation.eulerAngles.x);
+				oscSender.MySendOSCMessageTriggerMethod();	
+				taskstatus = false;
+			}
+
+			break;
 		}
 
 
