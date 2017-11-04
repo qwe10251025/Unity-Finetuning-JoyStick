@@ -106,8 +106,12 @@ public class SendControl : MonoBehaviour {
 
 
 				oscSender.setOSCData (0,0,mission1.transform.position.x,mission1.transform.position.y,mission1.transform.position.z,mission1.transform.rotation.eulerAngles.y,cam1.transform.rotation.eulerAngles.x);
+
+				Debug.Log(mission1.transform.position.x+","+mission1.transform.position.y+","+mission1.transform.position.z+","+mission1.transform.rotation.eulerAngles.y+","+cam1.transform.rotation.eulerAngles.x);
+
 				oscSender.MySendOSCMessageTriggerMethod();	
 				taskstatus = false;
+			
 			}else if (taskstatus == false) {
 
 				blackview.SetActive(false);

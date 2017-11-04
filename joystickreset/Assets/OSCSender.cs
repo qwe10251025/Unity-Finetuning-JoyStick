@@ -51,14 +51,14 @@ public class OSCSender : UniOSCEventDispatcher {
 		}
 
 		private void _updateOscMessageData(OscMessage msg){
+			
 			msg.UpdateDataAt (0, Command);
-			msg.UpdateDataAt (0, Status);
-
-			msg.UpdateDataAt (1, X);
-			msg.UpdateDataAt (2, Y); 
-			msg.UpdateDataAt (3, Z); 
-			msg.UpdateDataAt (4, Rotate); 
-			msg.UpdateDataAt (5, Gimble); 
+			msg.UpdateDataAt (1, Status);
+			msg.UpdateDataAt (2, X);
+			msg.UpdateDataAt (3, Y); 
+			msg.UpdateDataAt (4, Z); 
+			msg.UpdateDataAt (5, Rotate); 
+			msg.UpdateDataAt (6, Gimble); 
 
 		}
 
