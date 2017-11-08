@@ -48,37 +48,37 @@ public class FloatingPlayer2DController : MonoBehaviour
 
 
 		if (Rv > 0 && Rh < 0.2  && Rh > -0.2) {
-			transform.Translate (0,0,  0.5f);
+			transform.Translate (0,0,  1f*Time.deltaTime);
 
 		} else if (Rv < 0 && Rh < 0.2 && Rh > -0.2) {
 		
-			transform.Translate (0, 0, -0.5f);
+			transform.Translate (0, 0, -1f*Time.deltaTime);
 
 		}
 
 		if (Rh > 0 && Rv < 0.2  && Rv > -0.2) {
 		
-			transform.Translate (0.5f, 0, 0);
+			transform.Translate (1f*Time.deltaTime, 0, 0);
 
 		} else if (Rh < 0 && Rv < 0.2  && Rv > -0.2) {
 
-			transform.Translate (-0.5f, 0, 0);
+			transform.Translate (-1f*Time.deltaTime, 0, 0);
 
 		}
 
-		if (Lv > 0 && Lh < 0.2  && Lh > -0.2) {
-			transform.Translate (0, 0.5f, 0);
+		if (Lv > 0 && Lh < 0.5  && Lh > -0.5) {
+			transform.Translate (0, 1f*Time.deltaTime, 0);
 
-		} else if (Lv < 0 && Lh < 0.2  && Lh > -0.2) {
+		} else if (Lv < 0 && Lh < 0.5  && Lh > -0.5) {
 		
-			transform.Translate (0, -0.5f, 0);
+			transform.Translate (0, -1f*Time.deltaTime, 0);
 
 		}
 
-		if (Lh > 0 && Lv < 0.2  && Lv > -0.2) {
-			transform.Rotate (0,0.5f,0);
-		}else if (Lh < 0 && Lv < 0.2  && Lv > -0.2) {
-			transform.Rotate (0,-0.5f,0);
-		}
+//		if (Lh > 0 && Lv < 0.2  && Lv > -0.2) {
+//			transform.Rotate (0,0.5f,0);
+//		}else if (Lh < 0 && Lv < 0.2  && Lv > -0.2) {
+//			transform.Rotate (0,-0.5f,0);
+//		}
 	}
 }
