@@ -15,11 +15,19 @@ public class Control : MonoBehaviour {
 	float imgV;
 	//public float n =  -90;
 
+	public GameObject A;
+	public GameObject Q;
+	public RawImage raw;
+
+	Vector3 posA ;
+	Vector3 posQ ;
 
 
-	
+	public float distance ;
 	// Update is called once per frame
     void Update () {
+
+
 
 
 		movePlayer();
@@ -35,7 +43,21 @@ public class Control : MonoBehaviour {
 		img.transform.localPosition = new Vector3(434,-1*imgV,0);
 		//Debug.Log ("imgy"+imgy);
 
+		posA = A.transform.position;
+		posQ = Q.transform.position;
+	
 
+		distance = (posA - posQ).magnitude;
+
+		if (distance < 0.4) {
+
+			raw.color = new Color (0f, 255f, 0f);
+			Debug.Log ("Get");
+		} else {
+			raw.color = new Color (255f, 0f, 0f);
+
+		
+		}
 	}
 
 	void movePlayer()

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using OSCsharp.Data;
 
 public class SendControl : MonoBehaviour {
 
@@ -52,16 +54,24 @@ public class SendControl : MonoBehaviour {
 	public Image startimg;
 	public Text txt;
 
-
+	private Control distance1;
+	private Control distance2;
+	private Control distance3;
+	private Control distance4;
+	private Control distance5;
+	private Control distance6;
+	private Control distance7;
 
 	private bool taskstatus;
 
 	private int missionnum;
 
+	public Timer time;
+
 	public OSCSender oscSender;
 
 	void Start(){
-
+		//mission0LookAns
 		//true = snap button can send data 
 		taskstatus = true;
 		blackview.SetActive(true);
@@ -71,12 +81,116 @@ public class SendControl : MonoBehaviour {
 		txt.enabled = true;
 
 	}
+
+	void Update(){
+
+		distance1 = mission1.GetComponent<Control> ();
+		distance2 = mission2.GetComponent<Control> ();
+		distance3 = mission3.GetComponent<Control> ();
+		distance4 = mission4.GetComponent<Control> ();
+		distance5 = mission5.GetComponent<Control> ();
+		distance6 = mission6.GetComponent<Control> ();
+		distance7 = mission7.GetComponent<Control> ();
+
+
+
+		if(distance1.distance<0.4 && mission1.activeInHierarchy == true){
+
+			oscSender.setOSCData (0, 0, mission1.transform.position.x, mission1.transform.position.y, mission1.transform.position.z, mission1.transform.rotation.eulerAngles.y, cam1.transform.rotation.eulerAngles.x);
+
+			oscSender.MySendOSCMessageTriggerMethod ();	
+
+			time.status = true;
+
+			if(time.ts > 5){
+				time.status = false;
+				snap ();
+			}
+
+
+		}
+		if(distance2.distance < 0.4 && mission2.activeInHierarchy == true){
+
+			oscSender.setOSCData (1,0,mission2.transform.position.x,mission2.transform.position.y,mission2.transform.position.z,mission2.transform.rotation.eulerAngles.y,cam2.transform.rotation.eulerAngles.x);
+			oscSender.MySendOSCMessageTriggerMethod();	
+
+			time.status = true;
+
+			if(time.ts > 5){
+				time.status = false;
+				snap ();
+			}
+
+		}
+		if(distance3.distance<0.4 && mission3.activeInHierarchy == true){
+
+			oscSender.setOSCData (2,0,mission3.transform.position.x,mission3.transform.position.y,mission3.transform.position.z,mission3.transform.rotation.eulerAngles.y,cam3.transform.rotation.eulerAngles.x);
+			oscSender.MySendOSCMessageTriggerMethod();	
+
+			time.status = true;
+
+			if(time.ts > 5){
+				time.status = false;
+				snap ();
+			}
+		}
+		if(distance4.distance<0.4 && mission4.activeInHierarchy == true){
+
+			oscSender.setOSCData (3,0,mission4.transform.position.x,mission4.transform.position.y,mission4.transform.position.z,mission4.transform.rotation.eulerAngles.y,cam4.transform.rotation.eulerAngles.x);
+			oscSender.MySendOSCMessageTriggerMethod();	
+
+			time.status = true;
+
+			if(time.ts > 5){
+				time.status = false;
+				snap ();
+			}
+		}
+		if(distance5.distance<0.4 && mission5.activeInHierarchy == true){
+
+			oscSender.setOSCData (4,0,mission5.transform.position.x,mission5.transform.position.y,mission5.transform.position.z,mission5.transform.rotation.eulerAngles.y,cam5.transform.rotation.eulerAngles.x);
+			oscSender.MySendOSCMessageTriggerMethod();	
+
+			time.status = true;
+
+			if(time.ts > 5){
+				time.status = false;
+				snap ();
+			}		
+		}
+
+		if(distance6.distance<0.4 && mission6.activeInHierarchy == true){
+
+			oscSender.setOSCData (5,0,mission6.transform.position.x,mission6.transform.position.y,mission6.transform.position.z,mission6.transform.rotation.eulerAngles.y,cam6.transform.rotation.eulerAngles.x);
+			oscSender.MySendOSCMessageTriggerMethod();	
+
+			time.status = true;
+
+			if(time.ts > 5){
+				time.status = false;
+				snap ();
+			}		
+		}
+
+		if(distance7.distance<0.4 && mission7.activeInHierarchy == true){
+
+			oscSender.setOSCData (6,0,mission7.transform.position.x,mission7.transform.position.y,mission7.transform.position.z,mission7.transform.rotation.eulerAngles.y,cam7.transform.rotation.eulerAngles.x);
+			oscSender.MySendOSCMessageTriggerMethod();	
+
+			time.status = true;
+
+			if(time.ts > 5){
+				time.status = false;
+				snap ();
+			}		
+		}
+	}
 	public void Startmission(){
 
 		switch (missionnum){
 
 		case 0:
-			
+			//mission0Q
 			blackview.SetActive (false);
 
 			mission1.SetActive (true);
@@ -234,13 +348,14 @@ public class SendControl : MonoBehaviour {
 				god0box.enabled = false;
 				god0line.enabled = false;
 
+				time.status = false;
 
 
-				oscSender.setOSCData (0, 0, mission1.transform.position.x, mission1.transform.position.y, mission1.transform.position.z, mission1.transform.rotation.eulerAngles.y, cam1.transform.rotation.eulerAngles.x);
+//				oscSender.setOSCData (0, 0, mission1.transform.position.x, mission1.transform.position.y, mission1.transform.position.z, mission1.transform.rotation.eulerAngles.y, cam1.transform.rotation.eulerAngles.x);
+//
+//
+//				oscSender.MySendOSCMessageTriggerMethod ();	
 
-				Debug.Log (mission1.transform.position.x + "," + mission1.transform.position.y + "," + mission1.transform.position.z + "," + mission1.transform.rotation.eulerAngles.y + "," + cam1.transform.rotation.eulerAngles.x);
-
-				oscSender.MySendOSCMessageTriggerMethod ();	
 				taskstatus = false;
 				missionnum = 1;
 			}
@@ -279,9 +394,11 @@ public class SendControl : MonoBehaviour {
 
 				missionnum = 2;
 
+				time.status = false;
 
-				oscSender.setOSCData (1,0,mission2.transform.position.x,mission2.transform.position.y,mission2.transform.position.z,mission2.transform.rotation.eulerAngles.y,cam2.transform.rotation.eulerAngles.x);
-				oscSender.MySendOSCMessageTriggerMethod();	
+//				oscSender.setOSCData (1,0,mission2.transform.position.x,mission2.transform.position.y,mission2.transform.position.z,mission2.transform.rotation.eulerAngles.y,cam2.transform.rotation.eulerAngles.x);
+//				oscSender.MySendOSCMessageTriggerMethod();	
+
 				taskstatus = false;
 			}
 //			else if (taskstatus == false) {
@@ -316,10 +433,11 @@ public class SendControl : MonoBehaviour {
 				ship30line.enabled = false;
 
 				missionnum = 3;
+				time.status = false;
 
 
-				oscSender.setOSCData (2,0,mission3.transform.position.x,mission3.transform.position.y,mission3.transform.position.z,mission3.transform.rotation.eulerAngles.y,cam3.transform.rotation.eulerAngles.x);
-				oscSender.MySendOSCMessageTriggerMethod();	
+//				oscSender.setOSCData (2,0,mission3.transform.position.x,mission3.transform.position.y,mission3.transform.position.z,mission3.transform.rotation.eulerAngles.y,cam3.transform.rotation.eulerAngles.x);
+//				oscSender.MySendOSCMessageTriggerMethod();	
 				taskstatus = false;
 			}
 //			else if (taskstatus == false) {
@@ -355,9 +473,10 @@ public class SendControl : MonoBehaviour {
 
 				missionnum = 4;
 
+				time.status = false;
 
-				oscSender.setOSCData (3,0,mission4.transform.position.x,mission4.transform.position.y,mission4.transform.position.z,mission4.transform.rotation.eulerAngles.y,cam4.transform.rotation.eulerAngles.x);
-				oscSender.MySendOSCMessageTriggerMethod();	
+//				oscSender.setOSCData (3,0,mission4.transform.position.x,mission4.transform.position.y,mission4.transform.position.z,mission4.transform.rotation.eulerAngles.y,cam4.transform.rotation.eulerAngles.x);
+//				oscSender.MySendOSCMessageTriggerMethod();	
 				taskstatus = false;
 			}
 //			else if (taskstatus == false) {
@@ -393,9 +512,11 @@ public class SendControl : MonoBehaviour {
 
 				missionnum = 5;
 
+				time.status = false;
 
-				oscSender.setOSCData (4,0,mission5.transform.position.x,mission5.transform.position.y,mission5.transform.position.z,mission5.transform.rotation.eulerAngles.y,cam5.transform.rotation.eulerAngles.x);
-				oscSender.MySendOSCMessageTriggerMethod();	
+//				oscSender.setOSCData (4,0,mission5.transform.position.x,mission5.transform.position.y,mission5.transform.position.z,mission5.transform.rotation.eulerAngles.y,cam5.transform.rotation.eulerAngles.x);
+//				oscSender.MySendOSCMessageTriggerMethod();	
+
 				taskstatus = false;
 			}
 //			else if (taskstatus == false) {
@@ -431,9 +552,10 @@ public class SendControl : MonoBehaviour {
 
 				missionnum = 6;
 
+				time.status = false;
 
-				oscSender.setOSCData (5,0,mission6.transform.position.x,mission6.transform.position.y,mission6.transform.position.z,mission6.transform.rotation.eulerAngles.y,cam6.transform.rotation.eulerAngles.x);
-				oscSender.MySendOSCMessageTriggerMethod();	
+//				oscSender.setOSCData (5,0,mission6.transform.position.x,mission6.transform.position.y,mission6.transform.position.z,mission6.transform.rotation.eulerAngles.y,cam6.transform.rotation.eulerAngles.x);
+//				oscSender.MySendOSCMessageTriggerMethod();	
 				taskstatus = false;
 			}
 //			else if (taskstatus == false) {
@@ -468,9 +590,11 @@ public class SendControl : MonoBehaviour {
 				ship90line.enabled = false;
 
 
+				time.status = false;
 
-				oscSender.setOSCData (6,0,mission7.transform.position.x,mission7.transform.position.y,mission7.transform.position.z,mission7.transform.rotation.eulerAngles.y,cam7.transform.rotation.eulerAngles.x);
-				oscSender.MySendOSCMessageTriggerMethod();	
+//				oscSender.setOSCData (6,0,mission7.transform.position.x,mission7.transform.position.y,mission7.transform.position.z,mission7.transform.rotation.eulerAngles.y,cam7.transform.rotation.eulerAngles.x);
+//				oscSender.MySendOSCMessageTriggerMethod();	
+
 				taskstatus = false;
 			}
 
