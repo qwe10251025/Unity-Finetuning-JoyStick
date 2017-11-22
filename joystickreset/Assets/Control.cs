@@ -22,6 +22,7 @@ public class Control : MonoBehaviour {
 	Vector3 posA ;
 	Vector3 posQ ;
 
+	public float range;
 
 	public float distance ;
 	// Update is called once per frame
@@ -49,15 +50,15 @@ public class Control : MonoBehaviour {
 
 		distance = (posA - posQ).magnitude;
 
-		if (distance < 0.4) {
+		// if (distance < 0.5) {
 
-			raw.color = new Color (0f, 255f, 0f);
-			Debug.Log ("Get");
-		} else {
-			raw.color = new Color (255f, 0f, 0f);
+		// 	raw.color = new Color (0f, 255f, 0f);
+		// 	Debug.Log ("Get");
+		// } else {
+		// 	raw.color = new Color (255f, 0f, 0f);
 
 		
-		}
+		// }
 	}
 
 	void movePlayer()

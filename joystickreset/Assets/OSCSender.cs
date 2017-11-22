@@ -28,7 +28,7 @@ public class OSCSender : UniOSCEventDispatcher {
 			AppendData (123.0f);
 			AppendData (123.0f);
 			AppendData (123.0f);
-			AppendData (123.0f);
+
 			//AppendData ("MyString");
 		}
 		public override void OnDisable(){
@@ -58,11 +58,10 @@ public class OSCSender : UniOSCEventDispatcher {
 			msg.UpdateDataAt (3, Y); 
 			msg.UpdateDataAt (4, Z); 
 			msg.UpdateDataAt (5, Rotate); 
-			msg.UpdateDataAt (6, Gimble); 
 
 		}
 
-	public void setOSCData(int Command, int Status,float X,float Y,float Z,float Rotate,float Gimble){
+	public void setOSCData(int Command, int Status,float X,float Y,float Z,float Rotate){
 			this.Command = Command;
 			this.Status = Status;
 			this.X = X;
@@ -71,7 +70,6 @@ public class OSCSender : UniOSCEventDispatcher {
 			this.Z = Z;
 
 			this.Rotate = Rotate;
-			this.Gimble = Gimble;
 
 
 		}
