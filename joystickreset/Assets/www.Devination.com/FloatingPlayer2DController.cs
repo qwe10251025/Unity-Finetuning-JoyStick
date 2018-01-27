@@ -47,20 +47,20 @@ public class FloatingPlayer2DController : MonoBehaviour
 		Rv = CrossPlatformInputManager.GetAxis ("Vertical_2");
 
 
-		if (Rv > 0 && Rh < 0.2  && Rh > -0.2) {
+		if (Rv > 0 ) {
 			transform.Translate (0,0,  1f*Time.deltaTime);
 
-		} else if (Rv < 0 && Rh < 0.2 && Rh > -0.2) {
+		} else if (Rv < 0 ) {
 		
 			transform.Translate (0, 0, -1f*Time.deltaTime);
 
 		}
 
-		if (Rh > 0 && Rv < 0.2  && Rv > -0.2) {
+		if (Rh > 0 ) {
 		
 			transform.Translate (1f*Time.deltaTime, 0, 0);
 
-		} else if (Rh < 0 && Rv < 0.2  && Rv > -0.2) {
+		} else if (Rh < 0 ) {
 
 			transform.Translate (-1f*Time.deltaTime, 0, 0);
 

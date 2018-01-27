@@ -61,7 +61,9 @@ public class SendControl : MonoBehaviour {
 	public RawImage bus90box;
 	public RawImage bus90line;
 
-
+	public Button snapbut;
+	public Image snapimg;
+	public Text snaptxt;
 
 
 	public Button startbut;
@@ -103,6 +105,9 @@ public class SendControl : MonoBehaviour {
 		startimg.enabled = true;
 		txt.enabled = true;
 
+		snapbut.enabled = false;
+		snapimg.enabled = false;
+		snaptxt.enabled = false;
 	}
 
 	void Update(){
@@ -127,254 +132,261 @@ public class SendControl : MonoBehaviour {
 
 		if(distance1.distance< distance1.range && mission1.activeInHierarchy == true){
 
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
+
 			oscSender.setOSCData (0, 0, mission1.transform.position.x, mission1.transform.position.y, mission1.transform.position.z, mission1.transform.rotation.eulerAngles.y);
 
 			oscSender.MySendOSCMessageTriggerMethod ();	
 
-			time.status = true;
 
 			distance1.raw.color = new Color (0f, 255f, 0f);
 
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}
+			// if(time.ts > 5){
+			// 	time.status = false;
+			// 	snap ();
+			// }
 
 
-		}else {
-			
+		}else if(distance1.distance >distance1.range && mission1.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance1.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 		if(distance2.distance < distance2.range && mission2.activeInHierarchy == true){
 
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
+
 			oscSender.setOSCData (1,0,mission2.transform.position.x,mission2.transform.position.y,mission2.transform.position.z,mission2.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 
-			time.status = true;
 			distance2.raw.color = new Color (0f, 255f, 0f);
 
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}
+		
 
-		}else {
-			
+		}else if(distance2.distance >distance2.range && mission2.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance2.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 		if(distance3.distance<distance3.range && mission3.activeInHierarchy == true){
-
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
 			oscSender.setOSCData (2,0,mission3.transform.position.x,mission3.transform.position.y,mission3.transform.position.z,mission3.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 
-			time.status = true;
 			distance3.raw.color = new Color (0f, 255f, 0f);
 
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}
-		}else {
 			
+		}else if(distance3.distance >distance3.range && mission3.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance3.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 		if(distance4.distance<distance4.range && mission4.activeInHierarchy == true){
-
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
 			oscSender.setOSCData (3,0,mission4.transform.position.x,mission4.transform.position.y,mission4.transform.position.z,mission4.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 
-			time.status = true;
 			distance4.raw.color = new Color (0f, 255f, 0f);
 
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}
-		}else {
 			
+			
+		}else if(distance4.distance >distance4.range && mission4.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance4.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 		if(distance5.distance<distance5.range && mission5.activeInHierarchy == true){
-
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
 			oscSender.setOSCData (4,0,mission5.transform.position.x,mission5.transform.position.y,mission5.transform.position.z,mission5.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 
-			time.status = true;
 			distance5.raw.color = new Color (0f, 255f, 0f);
-
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}		
-		}else {
-			
+	
+		}else if(distance5.distance >distance5.range && mission5.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance5.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 
 		if(distance6.distance<distance6.range && mission6.activeInHierarchy == true){
-
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
 			oscSender.setOSCData (5,0,mission6.transform.position.x,mission6.transform.position.y,mission6.transform.position.z,mission6.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 
-			time.status = true;
 			distance6.raw.color = new Color (0f, 255f, 0f);
 
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}		
-		}else {
 			
+		}else if(distance6.distance >distance6.range && mission6.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance6.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 
 		if(distance7.distance<distance7.range && mission7.activeInHierarchy == true){
-
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
 			oscSender.setOSCData (6,0,mission7.transform.position.x,mission7.transform.position.y,mission7.transform.position.z,mission7.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 
-			time.status = true;
 			distance7.raw.color = new Color (0f, 255f, 0f);
 
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}		
-		}else {
-			
+				
+		}else if(distance7.distance >distance7.range && mission7.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance7.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 
 		if(distance8.distance<distance8.range && mission8.activeInHierarchy == true){
-
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
 			oscSender.setOSCData (7,0,mission8.transform.position.x,mission8.transform.position.y,mission8.transform.position.z,mission8.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 
 			distance8.raw.color = new Color (0f, 255f, 0f);
 
-			time.status = true;
 
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}		
-		}else {
-			
+				
+		}else if(distance8.distance >distance8.range && mission8.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance8.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 
 		if(distance9.distance<distance9.range && mission9.activeInHierarchy == true){
-
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
 			oscSender.setOSCData (8,0,mission9.transform.position.x,mission9.transform.position.y,mission9.transform.position.z,mission9.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 			distance9.raw.color = new Color (0f, 255f, 0f);
 
-			time.status = true;
 
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}		
-		}else {
 			
+		}else if(distance9.distance >distance9.range && mission9.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance9.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 
 		if(distance10.distance<distance10.range && mission10.activeInHierarchy == true){
-
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
 			oscSender.setOSCData (9,0,mission10.transform.position.x,mission10.transform.position.y,mission10.transform.position.z,mission10.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 			distance10.raw.color = new Color (0f, 255f, 0f);
 
-			time.status = true;
 
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}		
-		}else {
-			
+				
+		}else if(distance10.distance >distance10.range && mission10.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance10.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 
 		if(distance11.distance<distance11.range && mission11.activeInHierarchy == true){
-
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
 			oscSender.setOSCData (10,0,mission11.transform.position.x,mission11.transform.position.y,mission11.transform.position.z,mission11.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 			distance11.raw.color = new Color (0f, 255f, 0f);
 
-			time.status = true;
 
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}		
-		}else {
-			
+				
+		}else if(distance11.distance >distance11.range && mission11.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance11.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 
 		if(distance12.distance<distance12.range && mission12.activeInHierarchy == true){
-
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
 			oscSender.setOSCData (11,0,mission12.transform.position.x,mission12.transform.position.y,mission12.transform.position.z,mission12.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 			distance12.raw.color = new Color (0f, 255f, 0f);
 
-			time.status = true;
-
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}		
-		}else {
-			
+	
+		}else if(distance12.distance >distance12.range && mission12.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance12.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 
 		if(distance13.distance<distance13.range && mission13.activeInHierarchy == true){
-
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
 			oscSender.setOSCData (12,0,mission13.transform.position.x,mission13.transform.position.y,mission13.transform.position.z,mission13.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 			distance13.raw.color = new Color (0f, 255f, 0f);
 
-			time.status = true;
-
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}		
-		}else {
-			
+	
+		}else if(distance13.distance >distance13.range && mission13.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance13.raw.color = new Color (255f, 0f, 0f);
 		
 		}
 
 		if(distance14.distance<distance14.range && mission14.activeInHierarchy == true){
-
+			snapbut.enabled = true;
+			snapimg.enabled = true;
+			snaptxt.enabled = true;
 			oscSender.setOSCData (13,0,mission14.transform.position.x,mission14.transform.position.y,mission14.transform.position.z,mission14.transform.rotation.eulerAngles.y);
 			oscSender.MySendOSCMessageTriggerMethod();	
 			distance14.raw.color = new Color (0f, 255f, 0f);
 
-			time.status = true;
 
-			if(time.ts > 5){
-				time.status = false;
-				snap ();
-			}		
-		}else {
-			
+				
+		}else if(distance14.distance >distance14.range && mission14.activeInHierarchy == true){
+			snapbut.enabled = false;
+			snapimg.enabled = false;
+			snaptxt.enabled = false;
 			distance14.raw.color = new Color (255f, 0f, 0f);
 		
 		}
@@ -678,7 +690,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission1.SetActive (false);
 				god0box.enabled = false;
 				god0line.enabled = false;
@@ -722,7 +736,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission2.SetActive(false);
 				god15box.enabled = false;
 				god15line.enabled = false;
@@ -762,7 +778,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission3.SetActive(false);
 				ship30box.enabled = false;
 				ship30line.enabled = false;
@@ -801,7 +819,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission4.SetActive(false);
 				ship45box.enabled = false;
 				ship45line.enabled = false;
@@ -840,7 +860,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission5.SetActive(false);
 				car60box.enabled = false;
 				car60line.enabled = false;
@@ -880,7 +902,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission6.SetActive(false);
 				car75box.enabled = false;
 				car75line.enabled = false;
@@ -919,7 +943,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission7.SetActive(false);
 				ship90box.enabled = false;
 				ship90line.enabled = false;
@@ -946,7 +972,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission8.SetActive(false);
 				blowing0box.enabled = false;
 				blowing0line.enabled = false;
@@ -968,7 +996,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission9.SetActive(false);
 				blowing15box.enabled = false;
 				blowing15line.enabled = false;
@@ -990,7 +1020,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission10.SetActive(false);
 				bus30box.enabled = false;
 				bus30line.enabled = false;
@@ -1012,7 +1044,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission11.SetActive(false);
 				bus45box.enabled = false;
 				bus45line.enabled = false;
@@ -1034,7 +1068,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission12.SetActive(false);
 				boat60box.enabled = false;
 				boat60line.enabled = false;
@@ -1057,7 +1093,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission13.SetActive(false);
 				boat75box.enabled = false;
 				boat75line.enabled = false;
@@ -1079,7 +1117,9 @@ public class SendControl : MonoBehaviour {
 				startbut.enabled = true;
 				startimg.enabled = true;
 				txt.enabled = true;
-
+				snapbut.enabled = false;
+				snapimg.enabled = false;
+				snaptxt.enabled = false;
 				mission14.SetActive(false);
 				bus90box.enabled = false;
 				bus90line.enabled = false;
